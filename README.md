@@ -1,8 +1,6 @@
 
 # Project Grönt:
 
--------------------------------------------------------------------------------
-
 
 A fullstack attempt by students from Lexicon AB. This mono repository is for frontend and backend.  
   
