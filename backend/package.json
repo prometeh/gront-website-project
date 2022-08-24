@@ -5,7 +5,10 @@
   "main": "./src/app.js",
   "scripts": {
     "dev": "nodemon ./src/app.js",
-    "build": "node ./src/app.js"
+    "start": "node ./src/app.js"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "author": "Ushita mohammadi",
   "license": "ISC",
