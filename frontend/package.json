@@ -5,7 +5,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "rm -rf ./dist && parcel build ./src/index.html"
+    "build": "rm -rf ../backend/dist/ && parcel build ./src/index.html --dist-dir ../backend/dist"
   },
   "keywords": [],
   "author": "Brian Ssekatawa, Mikael Helin, Radha Manickam, Sajid Minhas, Thomas Byman, Ushita Mohammadi, [TODO] add the student from Linköping",
