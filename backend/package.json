@@ -10,7 +10,7 @@
   "engines": {
     "node": "16.x"
   },
-  "author": "Ushita mohammadi, Radha Manickam",
+  "author": "Ushita mohammadi, Radha Manickam, Sajid Minhas",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.1",
