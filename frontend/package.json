@@ -8,7 +8,7 @@
     "build": "rm -rf ../backend/dist/ && rm -rf ./dist/ && parcel build ./src/index.html && cp -r ./dist/ ../backend/dist/"
   },
   "keywords": [],
-  "author": "Brian Ssekatawa, Mikael Helin, Radha Manickam, Sajid Minhas, Thomas Byman, Ushita Mohammadi, [TODO] add the student from Linköping",
+  "author": "Brian Ssekatawa, Mikael Helin, Radha Manickam, Sajid Minhas, Thomas Byman, Ushita Mohammadi, Kajal Parekh, [TODO] add the student from Linköping",
   "license": "[TODO] ISC",
   "devDependencies": {
     "parcel": "^2.7.0",
