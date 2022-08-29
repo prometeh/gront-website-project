@@ -4,6 +4,7 @@
   "description": "https://gront.org website, frontend project",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
+    "prepare": "cd .. && husky install frontend/.husky",
     "dev": "parcel ./src/index.html",
     "build": "rm -rf ../backend/dist/ && rm -rf ./dist/ && parcel build ./src/index.html && cp -r ./dist/ ../backend/dist/"
   },
@@ -11,6 +12,8 @@
   "author": "Brian Ssekatawa, Mikael Helin, Radha Manickam, Sajid Minhas, Thomas Byman, Ushita Mohammadi, Kajal Parekh, [TODO] add the student from Linköping",
   "license": "[TODO] ISC",
   "devDependencies": {
+    "eslint": "^8.23.0",
+    "husky": "^8.0.1",
     "parcel": "^2.7.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
