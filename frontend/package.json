@@ -11,9 +11,11 @@
     "start": "parcel ./src/Login.html"
   },
   "keywords": [],
-  "author": "Brian Ssekatawa, Mikael Helin, Radha Manickam, Sajid Minhas, Thomas Byman, Ushita Mohammadi, [TODO] add the student from Linköping",
+  "author": "Brian Ssekatawa, Mikael Helin, Radha Manickam, Sajid Minhas, Thomas Byman, Ushita Mohammadi, Kajal Parekh, [TODO] add the student from Linköping",
   "license": "[TODO] ISC",
   "devDependencies": {
+    "eslint": "^8.23.0",
+    "husky": "^8.0.1",
     "parcel": "^2.7.0",
     "postcss": "^8.4.16",
     "tailwindcss": "^3.1.8"
