@@ -14,7 +14,8 @@ function scrollToTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
-
+// Event to scroll up
+myButton.addEventListener('click', scrollToTop);
 // Show current year
 const showYear = new Date();
 let year = showYear.getFullYear();
