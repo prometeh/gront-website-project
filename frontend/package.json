@@ -7,7 +7,6 @@
     "prepare": "cd .. && husky install frontend/.husky",
     "dev": "parcel ./src/index.html",
     "build": "rm -rf ../backend/dist/ && rm -rf ./dist/ && parcel build ./src/index.html && cp -r ./dist/ ../backend/dist/",
-    "build-css":"tailwindcss build src/assets/css/style.css -o src/style.css" ,
     "start": "parcel ./src/Login.html"
   },
   "keywords": [],
