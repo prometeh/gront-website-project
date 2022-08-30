@@ -4,6 +4,7 @@
   "description": "a backend solution with expressJS for gront project",
   "main": "./src/app.js",
   "scripts": {
+    "prepare":  "cd .. && husky install backend/.husky",
     "dev": "nodemon ./src/app.js",
     "start": "node ./src/app.js"
   },
@@ -19,6 +20,8 @@
     "mongoose": "^6.5.2"
   },
   "devDependencies": {
+    "eslint": "^8.23.0",
+    "husky": "^8.0.1",
     "nodemon": "^2.0.19"
   }
 }
