@@ -1,2 +1,0 @@
-const myButton=document.getElementById("toTop");function scrollDown(){document.body.scrollTop>45||document.documentElement.scrollTop>45?myButton.style.display="block":myButton.style.display="none"}function scrollToTop(){document.body.scrollTop=0,document.documentElement.scrollTop=0}window.onscroll=function(){scrollDown()};const showYear=new Date;let year=showYear.getFullYear();document.getElementById("year").innerHTML=year;
-//# sourceMappingURL=contact.ff433532.js.map
