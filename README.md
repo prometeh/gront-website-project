@@ -8,13 +8,6 @@ For more information and instruction of each part please click on respective lin
 
 ### [Frontend](https://github.com/prometeh/gront-website-project/tree/main/frontend )  
 
-### Backend (*coming soon*)  
-
-## Contributors  
-
--------------------------------------------------------------------------------
+### [Backend](https://github.com/prometeh/gront-website-project/tree/main/backend )  
 
 
-Somporn Teppattra (teppattra@gmail.com)  
-
-Ushi (prometeh.zanjir@gmail.com)  
