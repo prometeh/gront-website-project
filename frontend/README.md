@@ -31,7 +31,7 @@ The project still has not been deployed on the main domain, however you can stil
 
 > 4. Make sure to run `npm run prepare` when you clone the repository for the first time and no more!!! It is very important that you have the hooks before commiting anything.
 
-> 5. Double check that you have done steps 2 & 3 in the instructions before starting to contribute to the project.
+> 5. Double check that you have done steps 3 & 4 in the instructions before starting to contribute to the project.
 
 > 6. If you are using Windows and Microsoft Code and have difficulties to run `npm run build`, it is likely due to the fact that you are running the command via *PowerShell* as your terminal. Please change the terminal to *bash* (comes with installing git on windows) and try again.
 
