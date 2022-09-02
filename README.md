@@ -1,4 +1,4 @@
-
+[![Fly Deploy](https://github.com/prometeh/gront-website-project/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/prometeh/gront-website-project/actions/workflows/main.yml)
 # Project Grönt:
 
 
