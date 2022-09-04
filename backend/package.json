@@ -4,7 +4,7 @@
   "description": "a backend solution with expressJS for gront project",
   "main": "./src/app.js",
   "scripts": {
-    "prepare":  "cd .. && husky install backend/.husky",
+    "prepare": "cd .. && husky install backend/.husky",
     "dev": "nodemon ./src/app.js",
     "start": "node ./src/app.js"
   },
@@ -14,9 +14,12 @@
   "author": "Ushita mohammadi, Radha Manickam, Sajid Minhas, Kajal Parekh",
   "license": "ISC",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "http-status-codes": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2"
   },
   "devDependencies": {
