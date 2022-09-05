@@ -3,8 +3,8 @@ const connectToMongo = require("./database/mongo/connect");
 var bodyParser = require("body-parser");
 
 // Import Routers
-const authRoute =require('./routes/auth');
-const postRoute= require('./routes/post');
+const authRoute =require("./routes/auth");
+const postRoute= require("./routes/post");
 
 const express = require("express");
 const { StatusCodes } = require("http-status-codes");
@@ -16,9 +16,9 @@ app.use(express.static("dist"));
 
 // Route Middlewares
 app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api/user',authRoute);
-app.use('/api/posts',postRoute);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use("/api/user",authRoute);
+app.use("/api/posts",postRoute);
 
 app.get("*", (req, res) => {
   res.status(StatusCodes.NOT_FOUND).send("<h1>404: Page Not Found.</h1>");

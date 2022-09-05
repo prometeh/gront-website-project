@@ -1,13 +1,13 @@
- const router = require('express').Router();
-const User = require('../model/User');
-const verify = require('./verifyToken');
+const router = require("express").Router();
 
-router.get('/',verify, (req,res)=>{
+const verify = require("./verifyToken");
 
-    res.json({post:{
-                title:'my first post',
-            }
-    });
+router.get("/",verify, (req,res)=>{
+
+  res.json({post:{
+    title:"my first post",
+  }
+  });
 
     
 });
