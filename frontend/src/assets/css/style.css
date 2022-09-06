@@ -228,6 +228,9 @@ body {
 
 /* Media queries */
 @media (max-width: 992px) {
+  .bg-smallscreen{
+    background: rgb(49, 143, 23);
+  }
   .hero-txt-style {
     font-size: 2rem;
     font-weight: 600;
@@ -239,6 +242,9 @@ body {
   }
 }
 @media (max-width: 575px) {
+  .bg-smallscreen{
+    background: rgb(49, 143, 23);
+  }
   .logo-img {
     width: 58%;
     height: auto;
