@@ -1,6 +1,7 @@
 require("dotenv").config();
 const connectToMongo = require("./database/mongo/connect");
 var bodyParser = require("body-parser");
+const path = require("path");
 
 // Import Routers
 const authRoute =require("./routes/auth");
@@ -21,7 +22,7 @@ app.use("/api/user",authRoute);
 app.use("/api/posts",postRoute);
 
 app.get("*", (req, res) => {
-  res.status(StatusCodes.NOT_FOUND).send("<h1>404: Page Not Found.</h1>");
+  res.status(StatusCodes.NOT_FOUND).sendFile(path.join(__dirname + "./../dist/page-not-found.html"));
 });
 
 const start = async () => {
