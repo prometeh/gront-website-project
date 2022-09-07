@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "https://gront.org website, frontend project",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "source":[ "./src/index.html", "./src/admin.html", "./src/page-not-found.html"],
+  "source": [
+    "./src/index.html",
+    "./src/admin.html",
+    "./src/page-not-found.html"
+  ],
   "scripts": {
     "prepare": "cd .. && husky install frontend/.husky",
     "dev": "parcel",
@@ -17,6 +21,7 @@
     "husky": "^8.0.1",
     "parcel": "^2.7.0",
     "postcss": "^8.4.16",
+    "sharp": "^0.29.3",
     "tailwindcss": "^3.1.8"
   }
 }
