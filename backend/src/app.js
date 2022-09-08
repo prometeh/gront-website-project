@@ -13,14 +13,17 @@ const errorHandlerMiddleware = require("./middlewares/error-handler");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static("dist"));
-
 // Route Middlewares
 app.use(express.json());
 app.use("/api/v1/admin", authRouter);
 
 // an example of how to use auth
-app.use("/", authenticateAdmin, adminRouter);
+app.use("/admin", authenticateAdmin, adminRouter);
+
+// after protecting the necessary routes
+// in dist directory we load everything else
+// staticly
+app.use(express.static("dist"));
 
 // error handling middleware
 app.use(errorHandlerMiddleware);
