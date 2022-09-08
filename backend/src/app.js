@@ -1,5 +1,7 @@
 require("dotenv").config();
 require("express-async-errors");
+
+const path = require("path");
 const express = require("express");
 const { StatusCodes } = require("http-status-codes");
 const connectToMongo = require("./database/mongo/connect");
@@ -24,7 +26,9 @@ app.use("/", authenticateAdmin, adminRouter);
 app.use(errorHandlerMiddleware);
 
 app.get("*", (req, res) => {
-  res.status(StatusCodes.NOT_FOUND).send("<h1>404: Page Not Found.</h1>");
+  res
+    .status(StatusCodes.NOT_FOUND)
+    .sendFile(path.join(__dirname + "./../dist/page-not-found.html"));
 });
 
 const start = async () => {
