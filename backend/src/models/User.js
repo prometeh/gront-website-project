@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "password is required"],
-    minlength: [6, "password maust be at least 6 characters long"],
+    minlength: [6, "password must be at least 6 characters long"],
   },
 });
 
@@ -24,7 +24,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.createJWT = function () {
   return jwt.sign(
-    { userID: this._id, name: this.name },
+    { userID: this._id, name: this.username },
     process.env.TOKEN_SECRET,
     {
       expiresIn: process.env.TOKEN_LIFETIME,
