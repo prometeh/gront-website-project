@@ -1,14 +1,14 @@
 require("dotenv").config();
-const connectToMongo = require("./database/mongo/connect");
-var bodyParser = require("body-parser");
+require("express-async-errors");
+
 const path = require("path");
-
-// Import Routers
-const authRoute =require("./routes/auth");
-const postRoute= require("./routes/post");
-
 const express = require("express");
 const { StatusCodes } = require("http-status-codes");
+const connectToMongo = require("./database/mongo/connect");
+const authRouter = require("./routes/auth");
+const adminRouter = require("./routes/admin");
+const authenticateAdmin = require("./middlewares/auth");
+const errorHandlerMiddleware = require("./middlewares/error-handler");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,13 +16,19 @@ const port = process.env.PORT || 3000;
 app.use(express.static("dist"));
 
 // Route Middlewares
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/api/user",authRoute);
-app.use("/api/posts",postRoute);
+app.use(express.json());
+app.use("/api/v1/admin", authRouter);
+
+// an example of how to use auth
+app.use("/", authenticateAdmin, adminRouter);
+
+// error handling middleware
+app.use(errorHandlerMiddleware);
 
 app.get("*", (req, res) => {
-  res.status(StatusCodes.NOT_FOUND).sendFile(path.join(__dirname + "./../dist/page-not-found.html"));
+  res
+    .status(StatusCodes.NOT_FOUND)
+    .sendFile(path.join(__dirname + "./../dist/page-not-found.html"));
 });
 
 const start = async () => {
@@ -31,9 +37,8 @@ const start = async () => {
     console.log("connected to MongoDB successfully!");
     app.listen(port, () => console.log("server is listening on port:" + port));
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 };
 
 start();
- 
