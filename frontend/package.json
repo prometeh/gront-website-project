@@ -6,7 +6,8 @@
   "source": [
     "./src/index.html",
     "./src/admin.html",
-    "./src/page-not-found.html"
+    "./src/page-not-found.html",
+    "./src/admin/dashboard.html"
   ],
   "scripts": {
     "prepare": "cd .. && husky install frontend/.husky",
