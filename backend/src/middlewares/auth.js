@@ -18,8 +18,6 @@ const authenticationMiddleware = async (req, res, next) => {
     req.user = { id, username };
     next();
   } catch (err) {
-    //TODO: remove the line bellow
-    console.log(err);
     return res
       .status(StatusCodes.UNAUTHORIZED)
       .json({ msg: "Not authorized to access this route" });
