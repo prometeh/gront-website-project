@@ -1,5 +1,7 @@
-const panel = async (req, res) => {
-  res.send("welcome to admin panel");
+const path = require ("path");
+
+const dashboard = async (req, res) => {
+  res.sendFile(path.join(__dirname + "/../../dist/admin/dashboard.html"));
 };
 
-module.exports = { panel };
+module.exports = { dashboard };
