@@ -3,18 +3,34 @@ require("express-async-errors");
 
 const path = require("path");
 const express = require("express");
+const helmet = require("helmet");
+const xss = require("xss-clean");
+const cors = require("cors");
+const rateLimit = require("express-rate-limit");
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 15 * 60 * 1000,
+  message: "Too many request from this IP"
+});
 const { StatusCodes } = require("http-status-codes");
 const connectToMongo = require("./database/mongo/connect");
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
 const authenticateAdmin = require("./middlewares/auth");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
-
 const app = express();
+app.set("trust proxy", 1);
 const port = process.env.PORT || 3000;
 
 // Route Middlewares
+// Add the limiter function to the express middleware
+// so that every request coming from user passes 
+// through this middleware.
+app.use(limiter);
 app.use(express.json());
+app.use(helmet());
+app.use(cors());
+app.use(xss());
 app.use("/api/v1/admin", authRouter);
 
 // an example of how to use auth
