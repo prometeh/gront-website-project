@@ -7,13 +7,10 @@ const errorMessage = document.getElementById("err-msg");
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
-    const { data } = await axios.post(
-      "http://localhost:3000/api/v1/admin/login",
-      {
-        username: username.value,
-        password: password.value,
-      }
-    );
+    const { data } = await axios.post("/api/v1/admin/login", {
+      username: username.value,
+      password: password.value,
+    });
     localStorage.setItem("token", data.token);
   } catch (err) {
     if (err.response) {
@@ -27,14 +24,11 @@ loginForm.addEventListener("submit", async (e) => {
   const token = localStorage.getItem("token");
 
   try {
-    const { data } = await axios.get(
-      "http://localhost:3000/admin/dashboard.html",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const { data } = await axios.get("/admin/dashboard.html", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     document.write(data);
   } catch (err) {
