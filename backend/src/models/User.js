@@ -41,5 +41,5 @@ UserSchema.methods.encryptPassword = async function(newpassword){
   const salt = await bcrypt.genSalt(10);
   const encryptednewpassword = await bcrypt.hash(newpassword,salt);
   return encryptednewpassword;
-}
+};
 module.exports = mongoose.model("User", UserSchema);
