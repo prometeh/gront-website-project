@@ -68,15 +68,15 @@ const update = async (req, res) => {
   if(newpassword.length>=6)
   {
     const encryptednewpassword = await user.encryptPassword(newpassword);
-    const updateuser = await User.findOneAndUpdate({username},{$set:{password:encryptednewpassword}})
+    const updateuser = await User.findOneAndUpdate({username},{$set:{password:encryptednewpassword}});
     if(updateuser){
       return res
-      .json("Password has been changed successfully");
+        .json("Password has been changed successfully");
     }
   }
   else{
     return res
-    .json("New Password length should be greater than 6 character");
+      .json("New Password length should be greater than 6 character");
   }
   
 };
