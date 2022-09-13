@@ -6,6 +6,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn-db {
+    @apply  bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded;
+  }
+}
+
 html {
   scroll-padding: 6rem;
 }
