@@ -34,7 +34,7 @@ The project still has not been deployed on the main domain, however you can stil
 >  7. If you don't see an updated deployment on your local or hosted services, it is moslty because of having an outdated `dist` directory. To have an updated backend, you need to open a new pull request for backend after running the `npm run build` command inside **frontend** directory. It moves the new frontend directory, *dist*, into the backend with the same name `dist`.
 >  8. Create your .env file locally which it is inside .gitignore or set the following environmental variables in the deployment of server
 >       - Create a .env file in the root of your project(Backend directory) and insert the following keys
->       - MONGO_URI=<Link to the database connection>
->       - TOKEN_SECRET=<secure text>
->       - TOKEN_LIFETIME=<life time for your token to expire>
+>       - MONGO_URI=*\<Link to the database connection\>*
+>       - TOKEN_SECRET=*\<secure text\>*
+>       - TOKEN_LIFETIME=*\<life time for your token to expire\>*
 
