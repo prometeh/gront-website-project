@@ -16,6 +16,7 @@ const { StatusCodes } = require("http-status-codes");
 const connectToMongo = require("./database/mongo/connect");
 const authRouter = require("./routes/auth");
 const adminRouter = require("./routes/admin");
+const newsRouter = require("./routes/news");
 const authenticateAdmin = require("./middlewares/auth");
 const errorHandlerMiddleware = require("./middlewares/error-handler");
 const app = express();
@@ -32,6 +33,7 @@ app.use(helmet());
 app.use(cors());
 app.use(xss());
 app.use("/api/v1/admin", authRouter);
+app.use("/api/v1/news", authenticateAdmin, newsRouter);
 
 // an example of how to use auth
 app.use("/admin", authenticateAdmin, adminRouter);
