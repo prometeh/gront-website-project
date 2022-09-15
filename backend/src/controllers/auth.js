@@ -44,12 +44,12 @@ const login = async (req, res) => {
 const update = async (req, res) => {
   const { username, oldpassword, newpassword } = req.body;
 
-  if (!username || !oldpassword || !newpassword ) {
+  if (!username || !oldpassword || !newpassword) {
     return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: "Fill the required field to proceed" });
   }
-  
+
   const user = await User.findOne({ username });
 
   if (!user) {
@@ -65,20 +65,18 @@ const update = async (req, res) => {
       .status(StatusCodes.UNAUTHORIZED)
       .json({ msg: "Invalid Old password" });
   }
-  if(newpassword.length>=6)
-  {
+  if (newpassword.length >= 6) {
     const encryptednewpassword = await user.encryptPassword(newpassword);
-    const updateuser = await User.findOneAndUpdate({username},{$set:{password:encryptednewpassword}});
-    if(updateuser){
-      return res
-        .json("Password has been changed successfully");
+    const updateuser = await User.findOneAndUpdate(
+      { username },
+      { $set: { password: encryptednewpassword } }
+    );
+    if (updateuser) {
+      return res.json("Password has been changed successfully");
     }
+  } else {
+    return res.json("New Password length should be greater than 6 character");
   }
-  else{
-    return res
-      .json("New Password length should be greater than 6 character");
-  }
-  
 };
 
 module.exports = { register, login, update };
