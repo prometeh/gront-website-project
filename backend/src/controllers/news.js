@@ -7,6 +7,7 @@ const create = async (req, res) => {
   res.status(StatusCodes.CREATED).send({ msg: "created the news" });
 };
 
+
 const update = async (req, res) => {
   const {
     body:   { title, article },
@@ -33,6 +34,8 @@ const update = async (req, res) => {
   res.status(StatusCodes.OK).send({ msg: "News has been updated successfuly" });
 };
 
+// deleting news api 
+
 const deleteNews = async (req, res) => {
   const {
     params: { id: newsId },
@@ -47,4 +50,21 @@ const deleteNews = async (req, res) => {
   res.status(StatusCodes.OK).send({ msg: "News has been deleted successfuly" });
 };
 
-module.exports = { create, deleteNews, update };
+// getting single news api request
+
+const getNews = async (req, res) => {
+  const {
+    params: { id: newsId },
+  } = req;
+  const news = await News.findById({ _id: newsId });
+  if (!news) {
+    return res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ msg: `There is no news with id: ${newsId}` });
+  }
+
+  res.status(StatusCodes.OK).json({ news });
+};
+
+module.exports = { create, deleteNews, update, getNews };
+
