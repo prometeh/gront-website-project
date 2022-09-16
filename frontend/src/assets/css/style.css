@@ -8,7 +8,7 @@
 
 @layer components {
   .btn-db {
-    @apply  bg-green-600 hover:bg-green-500 text-white font-bold py-2 px-4 rounded;
+    @apply bg-green-600 hover:bg-green-500 text-white w-32 font-bold py-2 px-4 rounded;
   }
 }
 
@@ -234,7 +234,7 @@ body {
 
 /* Media queries */
 @media (max-width: 992px) {
-  .bg-smallscreen{
+  .bg-smallscreen {
     background: rgb(49, 143, 23);
   }
   .hero-txt-style {
@@ -248,7 +248,7 @@ body {
   }
 }
 @media (max-width: 575px) {
-  .bg-smallscreen{
+  .bg-smallscreen {
     background: rgb(49, 143, 23);
   }
   .logo-img {
