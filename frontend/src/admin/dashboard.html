@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./../assets/css/style.css" rel="stylesheet" />
+    <script type="module" src="./scripts/index.js"></script>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./../assets/css/style.css" rel="stylesheet">
-</head>
-
-<body>
+  <body>
     <header>
-        <!-- Main Navbar -->
-        <nav>
-            <div class="flex justify-between bg-gray-200 inset-0 ">
-                <img src="./../assets/media/logo/GrontLogo.png" alt="company-logo" class="">
-                <a id="dashboard-logout" href=""><img src="./../assets/media/favicon/logout.png" alt="company-logo" class="w-12 h-12"></a>
-            </div>
-            <div class="flex  justify-evenly text-center bg-gray-400 text-lg font-bold drop-shadow-lg ">
-                
-                    <botton id="dashboard-setting" class="btn-db">Setting</botton>
-                    <botton id="dashboard-content" class="btn-db">Content</botton>
-                
-            </div>
-        </nav>
+      <!-- Main Navbar -->
+      <nav>
+        <div class="flex justify-between bg-gray-200 inset-0">
+          <img
+            src="./../assets/media/logo/GrontLogo.png"
+            alt="company-logo"
+            class="m-2"
+          />
+          <a id="dashboard-logout" href="/"
+            ><img
+              src="./../assets/media/favicon/logout.png"
+              alt="company-logo"
+              class="w-12 h-12 m-2"
+          /></a>
+        </div>
+        <div
+          id="nav-buttons"
+          class="flex justify-evenly text-center bg-gray-400 text-lg font-bold drop-shadow-lg"
+        ></div>
+      </nav>
     </header>
 
     <!-- Dashboard content -->
     <main>
-        <div class="items-center">
-            <h2 class="text-center text-2xl mt-5">Welcome to Grönt Dashboard</h1>
-        </div>
+      <div id="main-content" class="items-center"></div>
     </main>
     <!-- Footer -->
-    <footer>
-    </footer>
-</body>
-
+    <footer></footer>
+  </body>
 </html>
