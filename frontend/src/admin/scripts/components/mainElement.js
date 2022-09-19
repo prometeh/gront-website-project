@@ -37,4 +37,42 @@ const clearContents = (from) => {
   }
 };
 
-module.exports = { addTitle, addParagraph, clearContents };
+const addLabel = ( to, content, id = "", className = "mx-4") => {
+  try {
+    const label = document.createElement("label");
+    label.id = id;
+    label.innerHTML = content;
+    label.className = className;
+    to.appendChild(label);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const addTextArea = ( to, content, id = "", className = "mx-4") => {
+  try {
+    const area = document.createElement("area");
+
+    area.id = id;
+    area.innerHTML = content;
+    area.className = className;
+    to.appendChild(area);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const addTextInput = ( to, content, id = "", className = "mx-4") => {
+  try {
+    const input = document.createElement("input");
+
+    input.id = id;
+    input.innerHTML = content;
+    input.className = className;
+    to.appendChild(input);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { addTitle, addParagraph, clearContents, addLabel, addTextArea, addTextInput };
