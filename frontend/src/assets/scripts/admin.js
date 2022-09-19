@@ -7,33 +7,21 @@ const errorMessage = document.getElementById("err-msg");
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
-    const { data } = await axios.post("/api/v1/admin/login", {
-      username: username.value,
-      password: password.value,
-    });
-    localStorage.setItem("token", data.token);
+    await axios.post(
+      "/api/v1/admin/login",
+      {
+        username: username.value,
+        password: password.value,
+      },
+      { withCredentials: true }
+    );
+    location.href = "/admin/dashboard.html";
   } catch (err) {
     if (err.response) {
       errorMessage.innerText = err.response.data.msg;
     } else {
       console.log(err);
     }
-    localStorage.removeItem("token");
-  }
-
-  const token = localStorage.getItem("token");
-
-  try {
-    const { data } = await axios.get("/admin/dashboard.html", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    document.write(data);
-  } catch (err) {
-    console.log(err);
-    localStorage.removeItem("token");
   }
 });
 
