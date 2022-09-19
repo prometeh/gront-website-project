@@ -1,6 +1,8 @@
 const News = require("../models/News");
 const { StatusCodes } = require("http-status-codes");
 
+// create news api request
+
 const create = async (req, res) => {
   await News.create({ ...req.body });
 
@@ -63,15 +65,12 @@ const getNews = async (req, res) => {
   res.status(StatusCodes.OK).json({ news });
 };
 
-// getting single news api request
+// getting all news api request
 
 const getAllNews = async (req, res) => {
-
   const news = await News.find();
   if (!news) {
-    return res
-      .status(StatusCodes.NOT_FOUND)
-      .json({ msg: "There is no news"  });
+    return res.status(StatusCodes.NOT_FOUND).json({ msg: "There is no news" });
   }
 
   res.status(StatusCodes.OK).json({ news, count: news.length });
