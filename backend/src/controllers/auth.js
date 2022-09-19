@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 
+// TODO: need to implement verify via email
 const register = async (req, res) => {
   const user = await User.create({ ...req.body });
   const token = user.createJWT();
@@ -10,7 +11,7 @@ const register = async (req, res) => {
     .json({ user: { name: user.username }, token });
 };
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -37,7 +38,24 @@ const login = async (req, res) => {
 
   const token = user.createJWT();
 
-  res.status(StatusCodes.OK).json({ user: { name: user.username }, token });
+  // TODO: make a better error handling
+  req.session.regenerate((err) => {
+    if (err) {
+      console.log(err);
+      next();
+    }
+
+    req.session.user = req.body.username;
+    req.session.jwt = token;
+    req.session.save((err) => {
+      if (err) {
+        console.log(err);
+        next();
+      }
+
+      res.status(StatusCodes.OK).json({ user: { name: user.username }, token });
+    });
+  });
 };
 
 //Update password
