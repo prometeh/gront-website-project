@@ -30,7 +30,7 @@ app.set("trust proxy", 1);
 // Middlewares
 app.use(
   session({
-    genid: function (_req) {
+    genid: function () {
       return uuidv4(); // use UUIDs for session IDs
     },
     secret: process.env.SESSION_SECRET,
