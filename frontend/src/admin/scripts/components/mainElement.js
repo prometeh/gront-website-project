@@ -75,4 +75,17 @@ const addTextInput = ( to, content, id = "", className = "mx-4") => {
   }
 };
 
-module.exports = { addTitle, addParagraph, clearContents, addLabel, addTextArea, addTextInput };
+const divTag  = ( to, content, id = "", className = "") => {
+  try {
+    const div = document.createElement("div");
+
+    div.id = id;
+    div.innerHTML = content;
+    div.className = className;
+    to.appendChild(div);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { addTitle, addParagraph, clearContents, addLabel, addTextArea, addTextInput, divTag };
