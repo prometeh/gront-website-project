@@ -37,7 +37,7 @@ const clearContents = (from) => {
   }
 };
 
-const addLabel = ( to, content, id = "", className = "mx-4") => {
+const addLabel = ( to, content, id = "", className = "h-10 mx-4") => {
   try {
     const label = document.createElement("label");
     label.id = id;
@@ -49,20 +49,22 @@ const addLabel = ( to, content, id = "", className = "mx-4") => {
   }
 };
 
-const addTextArea = ( to, content, id = "", className = "mx-4") => {
+const addTextArea = ( to, content, id = "", className = "bg-gray-200 w-3/4  mx-4") => {
   try {
-    const area = document.createElement("area");
+    const area = document.createElement("textarea");
 
     area.id = id;
     area.innerHTML = content;
     area.className = className;
+    area.rows=10;
+    area.cols=40;
     to.appendChild(area);
   } catch (err) {
     console.log(err);
   }
 };
 
-const addTextInput = ( to, content, id = "", className = "mx-4") => {
+const addTextInput = ( to, content, id = "", className = "bg-gray-200 w-3/4 h-10 mx-4") => {
   try {
     const input = document.createElement("input");
 
@@ -87,5 +89,6 @@ const divTag  = ( to, content, id = "", className = "") => {
     console.log(err);
   }
 };
+
 
 module.exports = { addTitle, addParagraph, clearContents, addLabel, addTextArea, addTextInput, divTag };
