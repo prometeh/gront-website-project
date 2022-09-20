@@ -15,25 +15,24 @@ const login = async (req, res, next) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    return res
+    res
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: "Username & password are required to proceed" });
+    next();
   }
 
   const user = await User.findOne({ username });
 
   if (!user) {
-    return res
-      .status(StatusCodes.UNAUTHORIZED)
-      .json({ msg: "Invalid username" });
+    res.status(StatusCodes.UNAUTHORIZED).json({ msg: "Invalid username" });
+    next();
   }
 
   const isPasswordCorrect = await user.comparePassword(password);
 
   if (!isPasswordCorrect) {
-    return res
-      .status(StatusCodes.UNAUTHORIZED)
-      .json({ msg: "Invalid password" });
+    res.status(StatusCodes.UNAUTHORIZED).json({ msg: "Invalid password" });
+    next();
   }
 
   const token = user.createJWT();
@@ -54,8 +53,21 @@ const login = async (req, res, next) => {
       }
 
       res.status(StatusCodes.OK).json({ user: { name: user.username }, token });
+      next();
     });
   });
+};
+
+const logout = async (req, res) => {
+  req.session.user = null;
+  req.session.jwt = null;
+  req.session.save((err) => {
+    if (err) console.log(err);
+    req.session.regenerate((err) => {
+      if (err) console.log(err);
+    });
+  });
+  res.redirect("/admin/admin.html");
 };
 
 //Update password
@@ -97,4 +109,4 @@ const update = async (req, res) => {
   }
 };
 
-module.exports = { register, login, update };
+module.exports = { register, login, logout, update };
