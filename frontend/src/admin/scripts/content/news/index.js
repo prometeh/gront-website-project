@@ -26,8 +26,8 @@ const updateButtonEvents = () => {
   });
 
   addButton.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const news = require("./add");
+    news.render();
   });
 
   editButton.addEventListener("click", () => {
