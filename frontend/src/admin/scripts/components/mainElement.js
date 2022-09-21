@@ -37,7 +37,7 @@ const clearContents = (from) => {
   }
 };
 
-const addLabel = ( to, content, id = "", className = "h-10 mx-4") => {
+const addLabel = (to, content, id = "", className = "mx-4") => {
   try {
     const label = document.createElement("label");
     label.id = id;
@@ -49,22 +49,20 @@ const addLabel = ( to, content, id = "", className = "h-10 mx-4") => {
   }
 };
 
-const addTextArea = ( to, content, id = "", className = "bg-gray-200 w-3/4  mx-4") => {
+const addTextArea = (to, content, id = "", className = "mx-4") => {
   try {
-    const area = document.createElement("textarea");
+    const area = document.createElement("area");
 
     area.id = id;
     area.innerHTML = content;
     area.className = className;
-    area.rows=10;
-    area.cols=40;
     to.appendChild(area);
   } catch (err) {
     console.log(err);
   }
 };
 
-const addTextInput = ( to, content, id = "", className = "bg-gray-200 w-3/4 h-10 mx-4") => {
+const addTextInput = (to, content, id = "", className = "mx-4") => {
   try {
     const input = document.createElement("input");
 
@@ -77,7 +75,7 @@ const addTextInput = ( to, content, id = "", className = "bg-gray-200 w-3/4 h-10
   }
 };
 
-const divTag  = ( to, content, id = "", className = "") => {
+const divTag = (to, content, id = "", className = "") => {
   try {
     const div = document.createElement("div");
 
@@ -90,5 +88,45 @@ const divTag  = ( to, content, id = "", className = "") => {
   }
 };
 
+const addUnorderedList = (to, items, id = "", className = "") => {
+  try {
+    const ul = document.createElement("ul");
+    items.forEach((item) => {
+      console.log(item);
+      ul.appendChild(createListItem(item));
+    });
+    ul.className = className;
+    ul.id = id;
+    to.appendChild(ul);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-module.exports = { addTitle, addParagraph, clearContents, addLabel, addTextArea, addTextInput, divTag };
+const createListItem = (
+  content,
+  id = "",
+  className = "text-center text-lg mb-2 divide-y divide-gray-400"
+) => {
+  try {
+    const li = document.createElement("li");
+    li.innerHTML = content;
+    li.id = id;
+    li.className = className;
+    console.log(li);
+    return li;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = {
+  addTitle,
+  addParagraph,
+  clearContents,
+  addLabel,
+  addTextArea,
+  addTextInput,
+  divTag,
+  addUnorderedList,
+};
