@@ -43,7 +43,7 @@ app.use(
     }),
     cookie: {
       httpOnly: true,
-      sameSite: true,
+      sameSite: "lax",
       secure: "auto",
     },
     resave: false,
