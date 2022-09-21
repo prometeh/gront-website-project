@@ -59,15 +59,17 @@ const login = async (req, res, next) => {
 };
 
 const logout = async (req, res) => {
-  req.session.user = null;
-  req.session.jwt = null;
-  req.session.save((err) => {
-    if (err) console.log(err);
-    req.session.regenerate((err) => {
-      if (err) console.log(err);
+  try {
+    req.session.user = null;
+    req.session.jwt = null;
+    req.session.save(() => {
+      req.session.regenerate(() => {
+        res.redirect("/admin.html");
+      });
     });
-  });
-  res.redirect("/admin/admin.html");
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 //Update password
