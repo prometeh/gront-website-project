@@ -30,14 +30,11 @@ const isAuthenticated = (req, res, next) => {
     const decrypted = jwt.verify(req.session.jwt, process.env.TOKEN_SECRET);
     const { name } = decrypted;
     if (req.session.user && req.session.user === name) {
-      res.status(StatusCodes.OK);
       next();
     }
   } catch (err) {
-    console.log(err);
     if (res !== {}) {
       res.redirect("/admin.html");
-      next();
     }
   }
 };
