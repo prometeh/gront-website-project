@@ -7,9 +7,7 @@ const errorMessage = document.getElementById("err-msg");
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   try {
-    const {data} =
     await axios.post(
-
       "/api/v1/admin/login",
       {
         username: username.value,
@@ -17,7 +15,7 @@ loginForm.addEventListener("submit", async (e) => {
       },
       { withCredentials: true }
     );
-    localStorage.setItem("token",data.token);
+
     location.href = "/admin/dashboard.html";
   } catch (err) {
     if (err.response) {
