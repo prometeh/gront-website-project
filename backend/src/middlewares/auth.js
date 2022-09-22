@@ -2,7 +2,13 @@ const { StatusCodes } = require("http-status-codes");
 const jwt = require("jsonwebtoken");
 
 const authenticate = async (req, res, next) => {
-  const authHeader = req.headers.authorization;
+  let authHeader = "";
+
+  if (req.session && req.session.jwt) {
+    authHeader = `Bearer ${req.session.jwt}`;
+  } else {
+    authHeader = req.headers.authorization;
+  }
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
     return res
@@ -24,7 +30,6 @@ const authenticate = async (req, res, next) => {
   }
 };
 
-// TODO: auth needs review again
 const isAuthenticated = (req, res, next) => {
   try {
     const decrypted = jwt.verify(req.session.jwt, process.env.TOKEN_SECRET);
