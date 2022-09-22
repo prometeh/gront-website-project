@@ -32,8 +32,8 @@ const updateButtonEvents = () => {
   });
 
   editButton.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const editPage = require("./edit");
+    editPage.render();
   });
 
   deleteButton.addEventListener("click", () => {
