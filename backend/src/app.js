@@ -51,7 +51,48 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(helmet());
+
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: false,
+    "block-all-mixed-content": true,
+    "upgrade-insecure-requests": true,
+    directives: {
+      "default-src": ["'self'"],
+      "frame-src": ["'self'", "https://www.youtube.com"],
+      "base-uri": "'self'",
+      "font-src": ["'self'", "https:", "data:"],
+      "frame-ancestors": ["'self'"],
+      "img-src": ["'self'", "data:"],
+      "object-src": ["'none'"],
+      "script-src": ["'self'", "https://cdnjs.cloudflare.com"],
+      "script-src-attr": "'none'",
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://cdnjs.cloudflare.com",
+        "https://fonts.googleapis.com",
+      ],
+    },
+  }),
+  helmet.dnsPrefetchControl({
+    allow: true,
+  }),
+  helmet.frameguard({
+    action: "deny",
+  }),
+  helmet.hidePoweredBy(),
+  helmet.hsts({
+    maxAge: 123456,
+    includeSubDomains: false,
+  }),
+  helmet.ieNoOpen(),
+  helmet.noSniff(),
+  helmet.referrerPolicy({
+    policy: ["origin", "unsafe-url"],
+  }),
+  helmet.xssFilter()
+);
 app.use(limiter);
 app.use(cors());
 app.use(xss());
