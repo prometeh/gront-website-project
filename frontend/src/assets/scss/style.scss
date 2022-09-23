@@ -1,6 +1,9 @@
 /* Google Fonts Import */
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lato:wght@300;400;700;900&display=swap");
 
+// Import all of Bootstrap's CSS
+@import "~bootstrap/scss/bootstrap";
+
 /* tailwindcss */
 @tailwind base;
 @tailwind components;
