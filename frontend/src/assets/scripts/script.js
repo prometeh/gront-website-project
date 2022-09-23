@@ -1,5 +1,5 @@
 // Import all of Bootstrap's JS
-import * as bootstrap from "bootstrap";
+require("bootstrap");
 
 // Scroll to top button
 const myButton = document.getElementById("toTop");
