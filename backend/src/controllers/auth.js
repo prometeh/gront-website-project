@@ -11,49 +11,50 @@ const register = async (req, res) => {
     .json({ user: { name: user.username }, token });
 };
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
-    res
+    return res
       .status(StatusCodes.BAD_REQUEST)
       .json({ msg: "Username & password are required to proceed" });
-    next();
   }
 
   const user = await User.findOne({ username });
 
   if (!user) {
-    res.status(StatusCodes.UNAUTHORIZED).json({ msg: "Invalid username" });
-    next();
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .json({ msg: "Invalid username" });
   }
 
   const isPasswordCorrect = await user.comparePassword(password);
 
   if (!isPasswordCorrect) {
-    res.status(StatusCodes.UNAUTHORIZED).json({ msg: "Invalid password" });
-    next();
+    return res
+      .status(StatusCodes.UNAUTHORIZED)
+      .json({ msg: "Invalid password" });
   }
 
   const token = user.createJWT();
 
-  // TODO: make a better error handling
   req.session.regenerate((err) => {
     if (err) {
-      console.log(err);
-      next();
+      console.log(err.message);
+      return res.status(StatusCodes.UNAUTHORIZED).json({ msg: err.message });
     }
 
     req.session.user = req.body.username;
     req.session.jwt = token;
     req.session.save((err) => {
       if (err) {
-        console.log(err);
-        next();
+        console.log(err.message);
+        return res.status(StatusCodes.UNAUTHORIZED).json({ msg: err.message });
       }
 
-      res.status(StatusCodes.OK).json({ user: { name: user.username }, token });
-      next();
+      return res
+        .status(StatusCodes.OK)
+        .json({ user: { name: user.username }, token });
     });
   });
 };
