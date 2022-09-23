@@ -1,6 +1,11 @@
+// Import all of Bootstrap's JS
+import * as bootstrap from "bootstrap";
+
 // Scroll to top button
 const myButton = document.getElementById("toTop");
-window.onscroll = function() {scrollDown();};
+window.onscroll = function () {
+  scrollDown();
+};
 
 function scrollDown() {
   if (document.body.scrollTop > 45 || document.documentElement.scrollTop > 45) {
