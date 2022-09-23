@@ -27,8 +27,8 @@ const updateButtonEvents = () => {
   });
 
   addButton.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const addButton = require("./add");
+    addButton.render();
   });
 
   editButton.addEventListener("click", () => {
@@ -66,7 +66,9 @@ const updateList = async (to) => {
       authorization: "Bearer " + localStorage.getItem("token"),
     },
   });
-  const selectedData = data.news.map((n) => `${n.title}: ${n.article}: ${n.media}`);
+  const selectedData = data.news.map(
+    (n) => `${n.title}: ${n.article}: ${n.media}`
+  );
   mainElement.addUnorderedList(to, selectedData);
 };
 
