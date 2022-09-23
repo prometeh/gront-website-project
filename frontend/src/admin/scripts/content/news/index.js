@@ -27,18 +27,18 @@ const updateButtonEvents = () => {
   });
 
   addButton.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const addButton = require("./add");
+    addButton.render();
   });
 
   editButton.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const editPage = require("./edit");
+    editPage.render();
   });
 
   deleteButton.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const deleteNews = require("./delete");
+    deleteNews.render();
   });
 };
 // we update the main content we want to show
@@ -49,7 +49,7 @@ const updateContentPage = (newsPage) => {
   const edit =
     "<strong>Edit:</strong><br>Here you have a list of all the existing news and you will select which one needs to be updated. News will open in a form there you can change text and media file and click save button to apply all the changes.";
   const deleteNews =
-    "<strong>Delete:</strong><br>By clicking the delete button there you have a complete list of news and each news has a check box. If you want to delete any news from a list, you need to select that news check box and press delete button then reconfirm by Yes or No. After you click Yes, news will be removed from the website.";
+    "<strong>Delete:</strong><br>By clicking the delete button there you have a complete list of news and each news has a check box. If you want to delete any news from a list, you need to select that news check box and press delete button then reconfirm by Yes or No. After you click Yes, news will be removed from the website.<br><br>";
 
   mainElement.clearContents(newsPage);
   mainElement.addTitle(newsPage, title);
@@ -61,12 +61,10 @@ const updateContentPage = (newsPage) => {
 
 // this is responsible to show list of all the news
 const updateList = async (to) => {
-  const { data } = await axios.get("/api/v1/news/get", {
-    headers: {
-      authorization: "Bearer " + localStorage.getItem("token"),
-    },
-  });
-  const selectedData = data.news.map((n) => `${n.title}: ${n.article}: ${n.media}`);
+  const { data } = await axios.get("/api/v1/news/get");
+  const selectedData = data.news.map(
+    (n) => `${n.title}: ${n.article}: ${n.media}`
+  );
   mainElement.addUnorderedList(to, selectedData);
 };
 
