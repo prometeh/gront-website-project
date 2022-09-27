@@ -29,14 +29,6 @@ const addParagraph = (to, content, id = "", className = "mx-4") => {
   }
 };
 
-const clearContents = (from) => {
-  try {
-    from.innerHTML = "";
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 const addLabel = (to, content, id = "", className = "mx-4") => {
   try {
     const label = document.createElement("label");
@@ -75,7 +67,7 @@ const addTextInput = (to, content, id = "", className = "mx-4") => {
   }
 };
 
-const divTag = (to, content, id = "", className = "") => {
+const addDiv = (to, content, id = "", className = "") => {
   try {
     const div = document.createElement("div");
 
@@ -88,33 +80,9 @@ const divTag = (to, content, id = "", className = "") => {
   }
 };
 
-const addUnorderedList = (to, items, id = "", className = "") => {
+const clearContents = (from) => {
   try {
-    const ul = document.createElement("ul");
-    items.forEach((item) => {
-      console.log(item);
-      ul.appendChild(createListItem(item));
-    });
-    ul.className = className;
-    ul.id = id;
-    to.appendChild(ul);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const createListItem = (
-  content,
-  id = "",
-  className = "text-center text-lg mb-2 divide-y divide-gray-400"
-) => {
-  try {
-    const li = document.createElement("li");
-    li.innerHTML = content;
-    li.id = id;
-    li.className = className;
-    console.log(li);
-    return li;
+    from.innerHTML = "";
   } catch (err) {
     console.log(err);
   }
@@ -123,10 +91,9 @@ const createListItem = (
 module.exports = {
   addTitle,
   addParagraph,
-  clearContents,
   addLabel,
   addTextArea,
   addTextInput,
-  divTag,
-  addUnorderedList,
+  addDiv,
+  clearContents,
 };
