@@ -32,8 +32,9 @@ const updateButtonEvents = () => {
   });
 
   dashboardSetting.addEventListener("click", () => {
-    // TODO: add my functionality
-    return undefined;
+    const setting = require("./setting"); // we insert the codes *when* we need
+
+    setting.render();
   });
 };
 
