@@ -30,20 +30,18 @@ const updateContentPage = (newsPage) => {
   mainElement.clearContents(newsPage);
   mainElement.addParagraph(newsPage, back);
   mainElement.addParagraph(newsPage, edit);
-  ulNews.addNewsList(newsPage, "radio", "editlist");
+  ulNews.addNewsList(newsPage, "radio");
 };
 
 const updateEditListEvent = () => {
   const editButton = document.getElementById("news-edit");
 
   editButton.addEventListener("click", () => {
-    var editlist = document.getElementById("editlist");
-    var li = editlist.getElementsByTagName("li");
-
-    for (let i = 0; i < li.length; i++) {
-      var input = li[i].getElementsByTagName("input");
-      if (input[0].checked) console.log(li[i].id);
-    }
+    const radiobutton = document.getElementsByTagName("input");
+    const selectedNews = Array.from(radiobutton)
+      .filter((n) => n.checked)
+      .map((n) => n.id.split(" ").at(-1));
+    console.log(selectedNews[0]);
   });
 };
 
