@@ -1,6 +1,6 @@
-const axios = require("axios").default;
 const navMenu = require("./../../../components/navMenu");
 const mainElement = require("./../../../components/mainElement");
+const ulNews = require("./../../../components/news/list");
 
 const navButtons = document.getElementById("nav-buttons");
 
@@ -9,20 +9,23 @@ const newsList = document.getElementById("main-content");
 const addNavMenu = (buttonsList) => {
   navMenu.removeButtons(buttonsList);
   navMenu.addButton(buttonsList, "dashboard-delete", "Delete");
-  navMenu.addButton(buttonsList, "dashboard-cancel", "Cancel");
+  navMenu.addButton(buttonsList, "dashboard-back", "Back");
 };
 
 const updateButtonEvents = () => {
   const deleteButton = document.getElementById("dashboard-delete");
-  const cancelButton = document.getElementById("dashboard-cancel");
+  const backButton = document.getElementById("dashboard-back");
 
-  deleteButton.addEventListener("click", () => {
-    return undefined;
-  });
-
-  cancelButton.addEventListener("click", () => {
+  backButton.addEventListener("click", () => {
     const deleteNews = require("./..");
     deleteNews.render();
+  });
+
+  deleteButton.addEventListener("click", () => {
+    const checkBox = document.getElementsByTagName("input");
+    const checkedNews = Array.from(checkBox).filter(n => n.checked)
+      .map(n => n.id.split(" ").at(-1));
+    console.log(checkedNews);
   });
 };
 
@@ -35,22 +38,14 @@ const updateNewsList = (newsList) => {
   mainElement.clearContents(newsList);
   mainElement.addTitle(newsList, title);
   mainElement.addParagraph(newsList, intro);
-  updateList(newsList);
-};
-
-// this is responsible to show list of all the news
-const updateList = async (to) => {
-  const { data } = await axios.get("/api/v1/news/get");
-  const selectedData = data.news.map(
-    (n) => `${n.title}: ${n.article}: ${n.media}`
-  );
-  mainElement.addUnorderedList(to, selectedData);
+  // this is responsible to show list of all the news
+  ulNews.addNewsList(newsList, "checkBox", "deleteList");
 };
 
 const render = () => {
   addNavMenu(navButtons);
-  updateButtonEvents();
   updateNewsList(newsList);
+  updateButtonEvents();
 };
 
 module.exports = { render };
