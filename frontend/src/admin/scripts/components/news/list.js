@@ -66,15 +66,13 @@ const addNewsList = async (
       } else {
         content = "Invalid list item type";
       }
-  
+
       newsListItems.push(createListItem(content, news._id));
     });
   } else {
     content = newsData.title;
     newsListItems.push(createListItem(content, newsData._id));
-
   }
-  
 
   to.appendChild(createUnorderedList(newsListItems, id, className));
 };
