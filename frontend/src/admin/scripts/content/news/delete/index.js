@@ -3,7 +3,6 @@ const mainElement = require("./../../../components/mainElement");
 const ulNews = require("./../../../components/news/list");
 
 const navButtons = document.getElementById("nav-buttons");
-
 const newsList = document.getElementById("main-content");
 
 const addNavMenu = (buttonsList) => {
@@ -17,15 +16,23 @@ const updateButtonEvents = () => {
   const backButton = document.getElementById("dashboard-back");
 
   backButton.addEventListener("click", () => {
-    const deleteNews = require("./..");
-    deleteNews.render();
+    const newsPage = require("./..");
+    newsPage.render();
   });
 
   deleteButton.addEventListener("click", () => {
     const checkBox = document.getElementsByTagName("input");
-    const checkedNews = Array.from(checkBox).filter(n => n.checked)
-      .map(n => n.id.split(" ").at(-1));
-    console.log(checkedNews);
+    const checkedNews = Array.from(checkBox)
+      .filter((n) => n.checked)
+      .map((n) => n.id.split(" ").at(-1));
+    
+    if (checkedNews.length > 0) {
+      const confirmationpage = require("./confirmation");
+      confirmationpage.render(checkedNews);
+    } else {
+      const deletePage = require("./.");
+      deletePage.render();
+    }
   });
 };
 
@@ -46,6 +53,7 @@ const render = () => {
   addNavMenu(navButtons);
   updateNewsList(newsList);
   updateButtonEvents();
+  
 };
 
 module.exports = { render };

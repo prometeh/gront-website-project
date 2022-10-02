@@ -30,8 +30,11 @@ const createUnorderedList = (listItems, id = "", className = "") => {
   }
 };
 
-const getNews = async () => {
-  const { data } = await axios.get("/api/v1/news/get");
+const getNews = async (id = undefined) => {
+  const { data } = id
+    ? await axios.get("/api/v1/news/get/" + id)
+    : await axios.get("/api/v1/news/get");
+
   return data.news;
 };
 
@@ -39,31 +42,39 @@ const addNewsList = async (
   to,
   listType = "normal",
   id = "",
-  className = ""
+  className = "",
+  newsId = undefined
 ) => {
-  const newsData = await getNews();
+  const newsData = await getNews(newsId);
   let newsListItems = new Array();
   let content;
 
-  newsData.forEach((news) => {
-    if (listType === "normal") {
-      content = news.title;
-    } else if (listType === "checkBox") {
-      content = `<input type = "checkbox"
-                id = "${news.title} ${news._id}"
-                name = "${news.createdDate}">
-         <label for = "${news.title} ${news._id}"> ${news.title} </label>`;
-    } else if (listType === "radio") {
-      content = `<input type = "radio"
-                id = "${news.title} ${news._id}"
-                name = "selected news">
-         <label for = "${news.title} ${news._id}"> ${news.title} </label>`;
-    } else {
-      content = "Invalid list item type";
-    }
+  if (!newsId) {
+    newsData.forEach((news) => {
+      if (listType === "normal") {
+        content = news.title;
+      } else if (listType === "checkBox") {
+        content = `<input type = "checkbox"
+                  id = "${news.title} ${news._id}"
+                  name = "${news.createdDate}">
+           <label for = "${news.title} ${news._id}"> ${news.title} </label>`;
+      } else if (listType === "radio") {
+        content = `<input type = "radio"
+                  id = "${news.title} ${news._id}"
+                  name = "selected news">
+           <label for = "${news.title} ${news._id}"> ${news.title} </label>`;
+      } else {
+        content = "Invalid list item type";
+      }
+  
+      newsListItems.push(createListItem(content, news._id));
+    });
+  } else {
+    content = newsData.title;
+    newsListItems.push(createListItem(content, newsData._id));
 
-    newsListItems.push(createListItem(content, news._id));
-  });
+  }
+  
 
   to.appendChild(createUnorderedList(newsListItems, id, className));
 };
