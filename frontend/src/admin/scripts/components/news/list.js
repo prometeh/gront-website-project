@@ -3,7 +3,7 @@ const axios = require("axios").default;
 const createListItem = (
   content,
   id = "",
-  className = "text-center text-lg mb-2 divide-y divide-gray-400"
+  className = "text-lg m-3 divide-y divide-gray-400"
 ) => {
   try {
     const li = document.createElement("li");
@@ -49,23 +49,23 @@ const addNewsList = async (
   let newsListItems = new Array();
   let content;
   let accordionPart1 =
-    '<div class="accordion" data-accordion="open">' +
-    '<div class="accordion-item relative mb-3">' +
-    '<h2 class="mb-0">' +
+    "<div class=\"accordion\" data-accordion=\"open\">" +
+    "<div class=\"accordion-item relative mb-3\">" +
+    "<h2 class=\"mb-0\">" +
     "<button" +
-    ' class="accordion-button text-left font-semibold"' +
-    ' type="button"' +
-    'aria-expanded="false"' +
+    " class=\"accordion-button text-left font-semibold\"" +
+    " type=\"button\"" +
+    "aria-expanded=\"false\"" +
     ">" +
     "<span>";
   let accordionPart2 =
     "</span>" +
-    '<i class="fa fa-plus collapse-close absolute right-0 pt-1 text-xs"></i>' +
-    '<i class="fa fa-minus collapse-open absolute right-0 pt-1 text-xs"></i>' +
+    "<i class=\"fa fa-plus collapse-close absolute right-0 pt-1 text-xs\"></i>" +
+    "<i class=\"fa fa-minus collapse-open absolute right-0 pt-1 text-xs\"></i>" +
     "</button>" +
     "</h2>" +
-    '<div  class="show">' +
-    '<div class="py-4 text-sm opacity-60">';
+    "<div  class=\"show\">" +
+    "<div class=\"py-4 text-sm opacity-60 ml-5 whitespace-pre-wrap\">";
   let accordionPart3 = "</div>" + "</div>" + "</div>" + "</div>";
   if (!newsId) {
     newsData.forEach((news) => {
