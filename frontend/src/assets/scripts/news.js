@@ -20,7 +20,7 @@ window.addEventListener("load", async () => {
       h1.className = "text-lg font-bold p-2";
       h5.className = "text-sm text-stone-400 pl-2";
       image.className = "bg-gray-200 h-40 w-40 p-2";
-      p.className = "p-2";
+      p.className = "p-2 whitespace-pre-wrap";
       let d = new Date(element.createdDate);
 
       image.innerHTML = "Image need to fix";
