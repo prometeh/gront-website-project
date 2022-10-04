@@ -15,16 +15,16 @@ const addNewsform = (to, id = "", className = "mx-4") => {
     form.className = className;
     form.className = "my-5 flex flex-col";
 
-    div1.className = "mx-3 mb-6 pt-3 rounded bg-gray-400";
-    div2.className = "mx-3 mb-6 pt-3 rounded bg-gray-400";
-    div3.className = "mx-3 mb-6 pt-3 rounded bg-gray-400";
+    div1.className = "mx-3 mb-6 pt-3 rounded bg-gray-200";
+    div2.className = "mx-3 mb-6 pt-3 rounded bg-gray-200";
+    div3.className = "mx-3 mb-6 pt-3 rounded bg-gray-200";
 
     labelTitle.className =
-      "  mx-6 block text-gray-700 text-sm font-bold mb-2 ml-3";
+      " mx-6 block text-gray-700 text-sm font-bold mb-2 ml-3";
     labelTitle.innerHTML = "Title";
 
     inputTitle.className =
-      " bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-700 transition duration-500 px-3 pb-3";
+      " bg-white rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-700 transition duration-500 px-3 pb-3";
     inputTitle.id = "title";
     inputTitle.placeholder = "Enter the Article Title";
 
@@ -32,7 +32,7 @@ const addNewsform = (to, id = "", className = "mx-4") => {
     labelArticle.innerHTML = "Article";
 
     inputArticle.className =
-      "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-700 transition duration-500 px-3 pb-3";
+      "bg-white rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-700 transition duration-500 px-3 pb-3";
     inputArticle.rows = 10;
     inputArticle.cols = 60;
     inputArticle.id = "article";
@@ -42,7 +42,7 @@ const addNewsform = (to, id = "", className = "mx-4") => {
     labelMedia.innerHTML = "Media";
 
     inputMedia.className =
-      "bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-700 transition duration-500 px-3 pb-3";
+      "bg-white rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-700 transition duration-500 px-3 pb-3";
     inputMedia.id = "media";
     inputMedia.placeholder = "Enter the Media Link here....";
 
