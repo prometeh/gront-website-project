@@ -19,6 +19,16 @@ const updateButtonEvents = () => {
     const dashboard = require("./..");
     dashboard.render();
   });
+
+  const editButton = document.getElementById("news-edit");
+
+  editButton.addEventListener("click", () => {
+    const radiobutton = document.getElementsByTagName("input");
+    const selectedNews = Array.from(radiobutton)
+      .filter((n) => n.checked)
+      .map((n) => n.id.split(" ").at(-1));
+    console.log(selectedNews[0]);
+  });
 };
 // we edit the main content we want to show
 
@@ -33,23 +43,10 @@ const updateContentPage = (newsPage) => {
   ulNews.addNewsList(newsPage, "radio");
 };
 
-const updateEditListEvent = () => {
-  const editButton = document.getElementById("news-edit");
-
-  editButton.addEventListener("click", () => {
-    const radiobutton = document.getElementsByTagName("input");
-    const selectedNews = Array.from(radiobutton)
-      .filter((n) => n.checked)
-      .map((n) => n.id.split(" ").at(-1));
-    console.log(selectedNews[0]);
-  });
-};
-
 const render = () => {
   updateNavMenu(navButtons);
-  updateButtonEvents();
   updateContentPage(newsPage);
-  updateEditListEvent();
+  updateButtonEvents();
 };
 
 module.exports = { render };
