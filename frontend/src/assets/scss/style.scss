@@ -15,6 +15,43 @@
   }
 }
 
+.accordion {
+  width: 400px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.accordion-header{
+  display: flex;
+  justify-content: space-between;
+  padding: .75rem 1rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: white;
+  min-height: 3.5rem;
+  line-height: 1.25rem;
+  align-items: center;
+  cursor: pointer;
+}
+.accordion-header:active i{
+  transform: rotate(180deg);
+  transition: all 0.3s ease-in-out;
+}
+.accordion-body{
+  padding: 0 1rem;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.accordion-body:active{
+  max-height: auto;
+  padding: 1rem;
+}
+
 html {
   scroll-padding: 6rem;
 }
