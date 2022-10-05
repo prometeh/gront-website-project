@@ -29,6 +29,26 @@ const updateButtonEvents = () => {
       .map((n) => n.id.split(" ").at(-1));
     console.log(selectedNews[0]);
   });
+
+  //accordion
+  const accordionBtns = document.getElementsByClassName("accordion-header");
+  const accordionContents = document.getElementsByClassName("accordion-body");
+  accordionBtns.forEach((accordionBtn) => {
+    accordionBtn.addEventListener("click", (e) => {
+      accordionContents.forEach((accordionContent) => {
+        if (
+          e.target.nextElementSibling !== accordionContent &&
+          accordionContent.classList.contains("active")
+        ) {
+          accordionContent.classList.remove("active");
+          accordionBtns.forEach((btn) => btn.classList.remove("active"));
+        }
+      });
+      const panel = accordionBtn.nextElementSibling;
+      panel.classList.toggle("active");
+      accordionBtn.classList.toggle("active");
+    });
+  });
 };
 // we edit the main content we want to show
 

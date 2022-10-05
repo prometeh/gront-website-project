@@ -49,24 +49,16 @@ const addNewsList = async (
   let newsListItems = new Array();
   let content;
   let accordionPart1 =
-    "<div class=\"accordion\" data-accordion=\"open\">" +
-    "<div class=\"accordion-item relative mb-3\">" +
-    "<h2 class=\"mb-0\">" +
-    "<button" +
-    " class=\"accordion-button text-left font-semibold\"" +
-    " type=\"button\"" +
-    "aria-expanded=\"false\"" +
-    ">" +
-    "<span>";
+    '<div class="accordion" >' +
+    '<div class="accordion-item ">' +
+    '<button class="accordion-header  rounded bg-gray-400 active:bg-gray-600" type="button" >' +
+    "<Strong>";
   let accordionPart2 =
-    "</span>" +
-    "<i class=\"fa fa-plus collapse-close absolute right-0 pt-1 text-xs\"></i>" +
-    "<i class=\"fa fa-minus collapse-open absolute right-0 pt-1 text-xs\"></i>" +
+    "</Strong>" +
+    '<i class="fas fa-angle-down"></i>' +
     "</button>" +
-    "</h2>" +
-    "<div  class=\"show\">" +
-    "<div class=\"py-4 text-sm opacity-60 ml-5 whitespace-pre-wrap\">";
-  let accordionPart3 = "</div>" + "</div>" + "</div>" + "</div>";
+    '<div class="accordion-body py-4 text-sm opacity-60 ml-5 whitespace-pre-wrap">';
+  let accordionPart3 = "</div></div></div>";
   if (!newsId) {
     newsData.forEach((news) => {
       if (listType === "normal") {
@@ -75,7 +67,7 @@ const addNewsList = async (
           accordionPart1 +
           news.title +
           accordionPart2 +
-          news.article.slice(0, 5) +
+          news.article +
           accordionPart3;
       } else if (listType === "checkBox") {
         content =
@@ -100,7 +92,6 @@ const addNewsList = async (
       } else {
         content = "Invalid list item type";
       }
-
       newsListItems.push(createListItem(content, news._id));
     });
   } else {
