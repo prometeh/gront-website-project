@@ -31,10 +31,10 @@ const updateButtonEvents = () => {
   });
 
   //accordion
-  const accordionBtns = document.getElementsByClassName("accordion-header");
-  const accordionContents = document.getElementsByClassName("accordion-body");
+  const accordionBtns = document.querySelectorAll(".accordion-header");
+  const accordionContents = document.querySelectorAll(".accordion-body");
   accordionBtns.forEach((accordionBtn) => {
-    accordionBtn.addEventListener("click", (e) => {
+    accordionBtn.addEventsListener("click", (e) => {
       accordionContents.forEach((accordionContent) => {
         if (
           e.target.nextElementSibling !== accordionContent &&

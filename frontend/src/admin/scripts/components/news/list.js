@@ -3,7 +3,7 @@ const axios = require("axios").default;
 const createListItem = (
   content,
   id = "",
-  className = "text-lg m-3 divide-y divide-gray-400"
+  className = "text-lg"
 ) => {
   try {
     const li = document.createElement("li");
@@ -51,13 +51,13 @@ const addNewsList = async (
   let accordionPart1 =
     "<div class=\"accordion\" >" +
     "<div class=\"accordion-item \">" +
-    "<button class=\"accordion-header  rounded bg-gray-400 active:bg-gray-600\" type=\"button\" >" +
+    "<button class=\"accordion-header rounded bg-gray-400 active:bg-gray-600\" type=\"button\" >" +
     "<Strong>";
   let accordionPart2 =
     "</Strong>" +
     "<i class=\"fas fa-angle-down\"></i>" +
     "</button>" +
-    "<div class=\"accordion-body py-4 text-sm opacity-60 ml-5 whitespace-pre-wrap\">";
+    "<div class=\"accordion-body text-sm opacity-60 ml-5 whitespace-pre-wrap\">";
   let accordionPart3 = "</div></div></div>";
   if (!newsId) {
     newsData.forEach((news) => {
